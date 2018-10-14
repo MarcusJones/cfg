@@ -1,0 +1,61 @@
+set showmode
+let mapleader=" "
+
+" Create newlines without entering insert mode
+nnoremap go o<Esc>k
+nnoremap gO O<Esc>j
+nnoremap <leader>j o<Esc>k
+nnoremap <leader>k O<Esc>j
+
+" Remap block select to avoid collision with ctrl-v paste
+nnoremap <C-q> <C-v>
+
+" Emulate vim-surround
+set surround
+
+" Disable arrows
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" make jk do Esc, remove Esc
+inoremap jk <Esc>
+inoremap <Esc> <Nop>
+
+" Numbering and cursor 
+set number 
+set relativenumber 
+set scrolloff=10 
+set cursorline 
+hi CursorLine term=bold cterm=bold  
+
+" Map some macros to PyCharm commands
+" nmap csw' :action Macro.surround_with_single_quote<CR>
+" nmap csw" :action Macro.surround_with_double_quote<CR>
+" nmap ds' :action Macro.surround_undo_single_quote<CR>
+" nmap ds" :action Macro.surround_undo_double_quote<CR>
+" nmap cs"' :action Macro.surround_double_to_single_quote<CR>
+
+nnoremap <leader>l :action EditorToggleShowWhitespaces<cr>
+
+" easy system clipboard copy/paste
+noremap <leader>y "*y
+noremap <leader>yy "*Y
+noremap <leader>p "*p
+noremap <leader>P "*P
+
+
+" unimpaired mappings
+nnoremap [<space> O<esc>j
+nnoremap ]<space> o<esc>k
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
+nnoremap [m :action MethodUp<cr>
+nnoremap ]m :action MethodDown<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+
+" Just to beginning and end of lines easier. From http://vimbits.com/bits/16
+noremap H ^
+noremap L $
