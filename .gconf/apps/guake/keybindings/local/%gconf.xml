@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="decrease_height" mtime="1536682512" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;Down</stringvalue>
+	</entry>
+	<entry name="increase_height" mtime="1536682510" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;Up</stringvalue>
+	</entry>
+	<entry name="toggle_transparency" mtime="1536401465" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;t</stringvalue>
+	</entry>
+	<entry name="new_tab" mtime="1536401437" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;n</stringvalue>
+	</entry>
+	<entry name="rename_current_tab" mtime="1536401080" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;r</stringvalue>
+	</entry>
+	<entry name="next_tab" mtime="1536400850" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;l</stringvalue>
+	</entry>
+	<entry name="search_on_web" mtime="1536400844" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;u</stringvalue>
+	</entry>
+	<entry name="previous_tab" mtime="1536400827" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;h</stringvalue>
+	</entry>
+	<entry name="toggle_hide_on_lose_focus" mtime="1536400813" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;y</stringvalue>
+	</entry>
+</gconf>

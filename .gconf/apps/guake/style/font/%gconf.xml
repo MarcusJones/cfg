@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="style" mtime="1536566148" type="string">
+		<stringvalue>Inconsolata-dz for Powerline Medium 13</stringvalue>
+	</entry>
+	<entry name="palette_name" mtime="1536658250" type="string">
+		<stringvalue>Custom</stringvalue>
+	</entry>
+	<entry name="palette" mtime="1536658250" type="string">
+		<stringvalue>#4e4e4e4e4e4e:#ffff6b6b6060:#fafab0b03636:#ffffffffb6b6:#56569696eded:#ffff7373fdfd:#8e8ee4e47878:#eeeeeeeeeeee:#4f4f4f4f4f4f:#f9f968686060:#fafab0b03636:#fdfdffffb8b8:#6b6b9f9feded:#fcfc6e6ef9f9:#8e8ee4e47878:#ffffffffffff:#f8f8f8f8f2f2:#17b115a82e14</stringvalue>
+	</entry>
+	<entry name="allow_bold" mtime="1539501647" type="bool" value="true"/>
+</gconf>
