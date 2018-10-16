@@ -164,3 +164,32 @@ echo "Add activate.sh from Anaconda, for autoenv"
 source $HOME/anaconda3/bin/activate.sh
 
 alias config='/usr/bin/git --git-dir=/home/batman/.cfg/ --work-tree=/home/batman'
+
+function hello() {
+   echo "Hello, $1!"
+}
+
+clonethis() {
+    # Given a github repo name (target, reponame)
+    # Clone it to the DIR
+	TARGET=$1
+	THIS_REPO=$2
+
+	if [ "$TARGET" = "ocn" ]
+	then
+		ORGANIZATION="oceanprotocol"
+		THIS_DIR="ocn"
+	elif [ "$TARGET" = "mj" ]
+	then
+		ORGANIZATION="MarcusJones"
+		THIS_DIR="git"
+	else
+		exit 1
+	fi
+
+	echo "Cloning repo $ORGANIZATION/$THIS_REPO into $THIS_DIR"
+	git clone https://github.com/$ORGANIZATION/$THIS_REPO.git ~/$THIS_DIR/$THIS_REPO
+	# pip install --upgrade --force-reinstall git+https://github.com/$THIS_ORG/$THIS_REPO.git@$THIS_BRANCH
+}
+
+echo "Added function clonethis(org, repo, target_dir)"
