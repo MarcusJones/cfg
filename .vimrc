@@ -31,6 +31,9 @@ let g:NERDTreeMapPreview="<F4>"
 inoremap jk <Esc>
 inoremap <Esc> <Nop>
 
+" Remap the command colon
+map ; :
+
 " Numbering and cursor
 set number
 set relativenumber
