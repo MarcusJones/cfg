@@ -16,6 +16,20 @@ antigen bundle vi-mode
 ### SET VI MODE ###
 echo vi mode enabled
 bindkey -v
+export KEYTIMEOUT=20 # Faster mode switching
+# Better searching in command mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+# Remap esc
+bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
+bindkey '^j' vi-cmd-mode
+bindkey "jj" vi-cmd-mode
+bindkey "jk" vi-cmd-mode
+bindkey "kj" vi-cmd-mode
+
+
 
 ### ALIASES ###
 alias mj="source mj.sh"
@@ -23,7 +37,8 @@ alias jlhome="jupyter-lab"
 alias jl="jupyter-lab --notebook-dir=\"/home/batman/git/ref_DataScienceRetreat/DSR Lecture notebooks\""
 alias act="source activate"
 alias an="anaconda-navigator"
-echo "Added aliases mj, act, jl, jlhome, an"
+alias bcc="bitcoin-cli"
+echo "Added aliases mj, act, jl, jlhome, an, bcc"
 
 
 
@@ -168,6 +183,19 @@ alias config='/usr/bin/git --git-dir=/home/batman/.cfg/ --work-tree=/home/batman
 function hello() {
    echo "Hello, $1!"
 }
+
+
+condarem() {
+# Iterate over the list of environment names
+# Conda remove them without prompting
+	for var in "$@"
+	do
+		echo "Force removing environment $var"
+		conda-env remove --y --n "$var"
+	done
+}
+
+
 
 clonethis() {
     # Given a github repo name (target, reponame)
