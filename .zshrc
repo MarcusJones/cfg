@@ -178,11 +178,25 @@ sed 's/:/\n/g' <<< "$PATH"
 echo "Add activate.sh from Anaconda, for autoenv"
 source $HOME/anaconda3/bin/activate.sh
 
+### DOTFILES CONFIG ###
 alias config='/usr/bin/git --git-dir=/home/batman/.cfg/ --work-tree=/home/batman'
+echo "config = git for dotfiles alias solved"
 
+### FUNCTIONS ###
 function hello() {
    echo "Hello, $1!"
 }
+
+
+condainstall() {
+	REQ_FILE=$1
+	while read req; do 
+		echo "Requirement: $req" 
+		echo "conda install --yes $req"
+		conda install --yes $req
+	done <$REQ_FILE
+}
+echo "Added function condainstall(requirements.txt)"
 
 
 condarem() {
@@ -194,7 +208,7 @@ condarem() {
 		conda-env remove --y --n "$var"
 	done
 }
-
+echo "Added function condarem(<list env names>)"
 
 
 clonethis() {
@@ -221,3 +235,25 @@ clonethis() {
 }
 
 echo "Added function clonethis(org, repo, target_dir)"
+
+dockerclean() {
+	docker rmi -f $(docker images -q) # Remove all images
+	docker rm $(docker ps -a -q) # Remove all 
+}
+
+echo "Added function dockerclean()"
+
+
+install_branch() {
+    # Given a github path (organization, repo, branch)
+    # pip install the repo
+	THIS_ORG=$1
+	THIS_REPO=$2
+	THIS_BRANCH=$3
+	echo 
+	echo "Force-installing package from $THIS_BRANCH branch of $THIS_ORG/$THIS_REPO"
+	echo
+	pip install --upgrade --force-reinstall git+https://github.com/$THIS_ORG/$THIS_REPO.git@$THIS_BRANCH
+}
+
+echo "Added function install_branch(organization, repo, branch)"
