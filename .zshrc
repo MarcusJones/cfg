@@ -3,6 +3,20 @@ echo "In ~.zshrc"
 # Solve this error: WARNING! Your terminal supports less than 256 colors!
 export TERM="xterm-256color"
 
+### COLORS ###
+autoload colors
+if [[ "$terminfo[colors]" -gt 8 ]]; then
+    colors
+fi
+for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
+    eval $COLOR='$fg_no_bold[${(L)COLOR}]'
+    eval BOLD_$COLOR='$fg_bold[${(L)COLOR}]'
+done
+eval RESET='$reset_color'
+
+# echo ${BOLD_RED}BOLD_RED${RESET}
+# echo ${RED}RED${RESET}
+
 ### NOTES! ###
 echo Guake shortcuts
 echo Ctrl-Shift-H - Next tab
@@ -30,6 +44,8 @@ bindkey "jk" vi-cmd-mode
 bindkey "kj" vi-cmd-mode
 
 
+### LINUX HISTORY NO LINE NOS ###
+HISTTIMEFORMAT="$(echo -e '\r\e[K')"
 
 ### ALIASES ###
 alias mj="source mj.sh"
@@ -40,10 +56,13 @@ alias an="anaconda-navigator"
 alias bcc="bitcoin-cli"
 echo "Added aliases mj, act, jl, jlhome, an, bcc"
 
+### AWS PROFILES ###
+export AWS_PROFILE=kubernetes
+echo ${BOLD_YELLOW}'AWS_PROFILE=' $AWS_PROFILE${RESET}
 
-
-### Kubernetes auto complete ###
-source <(kubectl completion bash)
+### KUBERNETES AUTO COMPLETE ###
+source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
+# echo "if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi" >> ~/.zshrc # add autocomplete permanently to your zsh shell
 
 ### CUDA ENV ###
 export PATH=/usr/local/cuda-9.0/bin:$PATH
@@ -75,6 +94,14 @@ POWERLEVEL9K_ANACONDA_BACKGROUND=035
 POWERLEVEL9K_ANACONDA_FOREGROUND="white"
 POWERLEVEL9K_VIRTUALENV_BACKGROUND="black"
 POWERLEVEL9K_VIRTUALENV_FOREGROUND="249"
+# Advanced `vcs` color customization
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='blue'
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='black'
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='yellow'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='black'
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='red'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
+
 #ZSH_THEME="agnoster"
 #ZSH_THEME="refined"
 echo "Theme set to" $ZSH_THEME
@@ -86,51 +113,20 @@ echo "Theme set to" $ZSH_THEME
 # An empty array have no effect
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  autoenv
+  # autoenv
   zsh-autosuggestions
   vi-mode
   kubectl
@@ -138,45 +134,17 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # added by Anaconda3 installer
 export PATH="$HOME/anaconda3/bin:$PATH"
 
-
-
-echo "*** PATH ***"
-sed 's/:/\n/g' <<< "$PATH"
+echo ${BOLD_BLUE}"*** PATH ***"
+echo -n ${BLUE} 
+sed 's/:/\n/g' <<< "$PATH" 
+echo -n ${RESET}
 
 echo "Add activate.sh from Anaconda, for autoenv"
 source $HOME/anaconda3/bin/activate.sh
+source $HOME/anaconda3/bin/activate
 
 ### DOTFILES CONFIG ###
 alias config='/usr/bin/git --git-dir=/home/batman/.cfg/ --work-tree=/home/batman'
