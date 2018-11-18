@@ -1,7 +1,7 @@
 # cfg
 
 ## Creating
-```
+```shell
 # Create a 'bare' repository
 git init --bare $HOME/.cfg
 
@@ -17,7 +17,7 @@ config config --local status.showUntrackedFiles no
 ```
 
 ## Migrating
-```
+```shell
 # first add the alias to .bashrc or .zshrc;
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
