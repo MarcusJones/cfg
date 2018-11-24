@@ -1,9 +1,13 @@
 echo "In ~.zshrc"
 
+# SETUP! #######################################
 # Solve this error: WARNING! Your terminal supports less than 256 colors!
 export TERM="xterm-256color"
 
-### COLORS ###
+# LINUX HISTORY NO LINE NUMBERS
+HISTTIMEFORMAT="$(echo -e '\r\e[K')"
+
+# COLORS 
 autoload colors
 if [[ "$terminfo[colors]" -gt 8 ]]; then
     colors
@@ -13,21 +17,12 @@ for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
     eval BOLD_$COLOR='$fg_bold[${(L)COLOR}]'
 done
 eval RESET='$reset_color'
-
 # echo ${BOLD_RED}BOLD_RED${RESET}
 # echo ${RED}RED${RESET}
 
-### NOTES! ###
-echo Guake shortcuts
-echo Ctrl-Shift-H - Next tab
-echo Ctrl-Shift-L - Prev tab
-echo Ctrl-Shift-R - Rename tab
 
-### PLUGIN MANAGER ###
-source ~/antigen.zsh
-antigen bundle vi-mode
 
-### SET VI MODE ###
+### VI MODE ####################################
 echo vi mode enabled
 bindkey -v
 export KEYTIMEOUT=20 # Faster mode switching
@@ -44,10 +39,8 @@ bindkey "jk" vi-cmd-mode
 bindkey "kj" vi-cmd-mode
 
 
-### LINUX HISTORY NO LINE NOS ###
-HISTTIMEFORMAT="$(echo -e '\r\e[K')"
 
-### ALIASES ###
+### ALIASES #####################################
 alias mj="source mj.sh"
 alias jlhome="jupyter-lab"
 alias jl="jupyter-lab --notebook-dir=\"/home/batman/git/ref_DataScienceRetreat/DSR Lecture notebooks\""
@@ -56,20 +49,39 @@ alias an="anaconda-navigator"
 alias bcc="bitcoin-cli"
 echo "Added aliases mj, act, jl, jlhome, an, bcc"
 
-### AWS PROFILES ###
-export AWS_PROFILE=kubernetes
-echo ${BOLD_YELLOW}'AWS_PROFILE=' $AWS_PROFILE${RESET}
+# DOTFILES ALIAS
+alias config='/usr/bin/git --git-dir=/home/batman/.cfg/ --work-tree=/home/batman'
+echo "config = git for dotfiles alias solved"
 
-### KUBERNETES AUTO COMPLETE ###
+### UI NOTES ####################################
+echo ${BOLD_GREEN}"***UI NOTES***"${GREEN}
+echo Guake shortcuts
+echo 	Ctrl-Shift-H - Next tab
+echo 	Ctrl-Shift-L - Prev tab
+echo 	Ctrl-Shift-R - Rename tab
+
+
+### ENVIRONEMENT #################################
+echo ${BOLD_YELLOW}"***ENVIRONMENT***"${YELLOW}
+
+# AWS PROFILES 
+export AWS_PROFILE=kubernetes
+echo 'AWS_PROFILE='$AWS_PROFILE ${RESET} 
+
+# KUBERNETES AUTO COMPLETE
 source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
 # echo "if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi" >> ~/.zshrc # add autocomplete permanently to your zsh shell
 
-### CUDA ENV ###
+# CUDA ENV 
 export PATH=/usr/local/cuda-9.0/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
 echo Set CUDA environment!
 
-### CUSTOM PLUGINS ###
+### PLUGIN MANAGER ##############################
+source ~/antigen.zsh
+antigen bundle vi-mode
+
+# CUSTOM PLUGINS
 . ./.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # If you come from bash you might have to change your $PATH.
@@ -78,10 +90,7 @@ echo Set CUDA environment!
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-### THEME ###
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+### THEME ######################################
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='agnoster'
@@ -101,28 +110,9 @@ POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='yellow'
 POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='black'
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='red'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
-
-#ZSH_THEME="agnoster"
-#ZSH_THEME="refined"
-echo "Theme set to" $ZSH_THEME
-
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+echo "Theme set to" $ZSH_THEME
 
 plugins=(
   git
@@ -134,6 +124,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+### PATH ####################################################
 # added by Anaconda3 installer
 export PATH="$HOME/anaconda3/bin:$PATH"
 
@@ -146,11 +137,9 @@ echo "Add activate.sh from Anaconda, for autoenv"
 source $HOME/anaconda3/bin/activate.sh
 source $HOME/anaconda3/bin/activate
 
-### DOTFILES CONFIG ###
-alias config='/usr/bin/git --git-dir=/home/batman/.cfg/ --work-tree=/home/batman'
-echo "config = git for dotfiles alias solved"
 
-### FUNCTIONS ###
+### FUNCTIONS #################################################
+echo -n ${BOLD_RED}
 function hello() {
    echo "Hello, $1!"
 }
@@ -211,6 +200,15 @@ dockerclean() {
 
 echo "Added function dockerclean()"
 
+startwebk8s() {
+	kubectl proxy &
+	echo ${BOLD_GREEN}
+	aws-iam-authenticator token -i test-eks-dev | jq -r '.status.token'
+	echo ${RESET}
+	sensible-browser http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+}
+
+echo "Added function startwebk8s()"
 
 install_branch() {
     # Given a github path (organization, repo, branch)
@@ -225,3 +223,11 @@ install_branch() {
 }
 
 echo "Added function install_branch(organization, repo, branch)"
+
+startocean() {
+	cd ~/ocn/docker-images
+	./start_ocean.sh --latest --no-pleuston --local-parity-node
+}
+
+echo "Added function startocean()"
+
