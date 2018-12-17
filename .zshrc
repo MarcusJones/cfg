@@ -81,6 +81,27 @@ source <(kubectl completion zsh)  # setup autocomplete in zsh into the current s
 # echo Set CUDA environment!
 echo -n ${RESET}
 
+# NETWORK
+#myextip(){   
+#	this_ip="(host -t txt o-o.myaddr.l.google.com 8.8.8.8 | grep -oP 'client-subnet \K(\d{1,3}\.){3}\d{1,3}')"
+#	return this_ip
+#}
+
+mylanip() {
+	this_ip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
+	return $(this_ip)
+}
+
+mylanip2() {
+	ip4=$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
+	return ip4
+}
+#myextip
+#echo EXTERNAL IP: $myextip
+mylanip
+#mylanip2
+echo LAN IP: $(mylanip)
+
 ### PLUGIN MANAGER ##############################
 source ~/antigen.zsh
 antigen bundle vi-mode
@@ -232,3 +253,7 @@ startocean() {
 
 echo "Added function startocean()"
 
+
+scan_address() {
+	h
+}
