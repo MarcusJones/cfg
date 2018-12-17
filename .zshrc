@@ -21,9 +21,8 @@ eval RESET='$reset_color'
 # echo ${RED}RED${RESET}
 
 
-
 ### VI MODE ####################################
-echo vi mode enabled
+echo ${MAGENTA}vi mode enabled${RESET}
 bindkey -v
 export KEYTIMEOUT=20 # Faster mode switching
 # Better searching in command mode
@@ -39,6 +38,13 @@ bindkey "jk" vi-cmd-mode
 bindkey "kj" vi-cmd-mode
 
 
+### UI NOTES ####################################
+echo ${BOLD_GREEN}"*** UI NOTES ***"${GREEN}
+echo Guake shortcuts
+echo 	Ctrl-Shift-H - Next tab
+echo 	Ctrl-Shift-L - Prev tab
+echo 	Ctrl-Shift-R - Rename tab
+
 
 ### ALIASES #####################################
 alias mj="source mj.sh"
@@ -47,42 +53,40 @@ alias jl="jupyter-lab --notebook-dir=\"/home/batman/git/ref_DataScienceRetreat/D
 alias act="source activate"
 alias an="anaconda-navigator"
 alias bcc="bitcoin-cli"
-echo "Added aliases mj, act, jl, jlhome, an, bcc"
+echo "Added aliases: mj, act, jl, jlhome, an, bcc"
 
 # DOTFILES ALIAS
 alias config='/usr/bin/git --git-dir=/home/batman/.cfg/ --work-tree=/home/batman'
 echo "config = git for dotfiles alias solved"
 
-### UI NOTES ####################################
-echo ${BOLD_GREEN}"***UI NOTES***"${GREEN}
-echo Guake shortcuts
-echo 	Ctrl-Shift-H - Next tab
-echo 	Ctrl-Shift-L - Prev tab
-echo 	Ctrl-Shift-R - Rename tab
-
 
 ### ENVIRONEMENT #################################
-echo ${BOLD_YELLOW}"***ENVIRONMENT***"${YELLOW}
+echo ${BOLD_YELLOW}"*** ENVIRONMENT ***"
+echo -n ${YELLOW}
+echo "Add activate.sh from Anaconda, for autoenv"
+#source $HOME/anaconda3/bin/activate.sh
+#source $HOME/anaconda3/bin/activate
 
 # AWS PROFILES 
 export AWS_PROFILE=kubernetes
-echo 'AWS_PROFILE='$AWS_PROFILE ${RESET} 
+echo 'AWS_PROFILE='$AWS_PROFILE 
 
 # KUBERNETES AUTO COMPLETE
 source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
 # echo "if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi" >> ~/.zshrc # add autocomplete permanently to your zsh shell
 
 # CUDA ENV 
-export PATH=/usr/local/cuda-9.0/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
-echo Set CUDA environment!
+# export PATH=/usr/local/cuda-9.0/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
+# echo Set CUDA environment!
+echo -n ${RESET}
 
 ### PLUGIN MANAGER ##############################
 source ~/antigen.zsh
 antigen bundle vi-mode
 
 # CUSTOM PLUGINS
-. ./.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+#. ./.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -112,7 +116,7 @@ POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='red'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
 COMPLETION_WAITING_DOTS="true"
 
-echo "Theme set to" $ZSH_THEME
+echo ${BOLD_MAGENTA}"Theme set to" $ZSH_THEME ${RESET}
 
 plugins=(
   git
@@ -133,13 +137,10 @@ echo -n ${BLUE}
 sed 's/:/\n/g' <<< "$PATH" 
 echo -n ${RESET}
 
-echo "Add activate.sh from Anaconda, for autoenv"
-source $HOME/anaconda3/bin/activate.sh
-source $HOME/anaconda3/bin/activate
-
 
 ### FUNCTIONS #################################################
-echo -n ${BOLD_RED}
+echo ${BOLD_RED}"*** FUNCTIONS ***"
+echo -n ${RED}
 function hello() {
    echo "Hello, $1!"
 }
@@ -226,7 +227,7 @@ echo "Added function install_branch(organization, repo, branch)"
 
 startocean() {
 	cd ~/ocn/docker-images
-	./start_ocean.sh --latest --no-pleuston --local-parity-node
+	./start_ocean.sh --local-parity-node --latest 
 }
 
 echo "Added function startocean()"
