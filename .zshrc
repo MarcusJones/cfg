@@ -152,6 +152,7 @@ source $ZSH/oh-my-zsh.sh
 ### PATH ####################################################
 # added by Anaconda3 installer
 export PATH="$HOME/anaconda3/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 echo ${BOLD_BLUE}"*** PATH ***"
 echo -n ${BLUE} 
