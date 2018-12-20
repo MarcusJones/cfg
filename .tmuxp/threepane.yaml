@@ -1,0 +1,8 @@
+session_name: 3-pane-vertical
+windows:
+  - layout: even-vertical
+    window_name: my test window
+    panes:
+        - watch -n1 kubectl --namespace=jhub2 get pods -l component=singleuser-server
+        - watch -n1 kubectl --namespace=jhub2 get persistentvolumeclaims -l component=singleuser-storage
+        - watch -n1 "kubectl --namespace=jhub2 get persistentvolumes | awk '\$6~the_regex {print \$1 \" \" \$6}' the_regex='jhub2/claim'"

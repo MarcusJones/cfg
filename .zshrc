@@ -248,8 +248,11 @@ install_branch() {
 echo "Added function install_branch(organization, repo, branch)"
 
 startocean() {
-	cd ~/ocn/docker-images
-	./start_ocean.sh --local-parity-node --latest 
+	echo Offloading the Ocean Barge ...
+	export AQUARIUS_VERSION=v0.1.4
+	export BRIZO_VERSION=latest
+	export KEEPER_VERSION=v0.5.1
+	~/ocn/barge/start_ocean.sh --local-spree-node --no-pleuston
 }
 
 echo "Added function startocean()"
