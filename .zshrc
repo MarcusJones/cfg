@@ -260,6 +260,9 @@ startocean() {
 
 echo "Added function startocean()"
 
+speed_test() {
+	watch -n 60 "speedtest-cli | egrep 'Download:|Upload:'" 
+}
 
 scan_address() {
 	h
