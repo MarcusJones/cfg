@@ -79,7 +79,6 @@ source <(kubectl completion zsh)  # setup autocomplete in zsh into the current s
 # export PATH=/usr/local/cuda-9.0/bin:$PATH
 # export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
 # echo Set CUDA environment!
-echo -n ${RESET}
 
 # NETWORK
 #myextip(){   
@@ -89,28 +88,30 @@ echo -n ${RESET}
 
 mylanip() {
 	this_ip=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
-	return $(this_ip)
+	echo $this_ip
+	#return $(this_ip)
 }
 
-mylanip2() {
-	ip4=$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
-	return ip4
-}
+# mylanip2() {
+#ip4=$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
+#	return ip4
+#}
 #myextip
 #echo EXTERNAL IP: $myextip
-mylanip
+#mylanip
 #mylanip2
 echo LAN IP: $(mylanip)
+echo -n ${RESET}
 
 ### PLUGIN MANAGER ##############################
 source ~/antigen.zsh
+antigen use oh-my-zsh
 antigen bundle vi-mode
 
 # CUSTOM PLUGINS
 #. ./.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
+antigen bundle zsh-users/zsh-autosuggestions
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -148,6 +149,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+antigen apply
 
 ### PATH ####################################################
 # added by Anaconda3 installer
