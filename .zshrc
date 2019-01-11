@@ -249,9 +249,9 @@ echo "Added function install_branch(organization, repo, branch)"
 
 startocean() {
 	echo Offloading the Ocean Barge ...
-	export AQUARIUS_VERSION=v0.1.4
-	export BRIZO_VERSION=latest
-	export KEEPER_VERSION=v0.5.1
+	export AQUARIUS_VERSION=0.1.4
+	export BRIZO_VERSION=0.1.4
+	export KEEPER_VERSION=v0.5.3
 	~/ocn/barge/start_ocean.sh --local-spree-node --no-pleuston
 }
 
