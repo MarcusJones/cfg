@@ -71,6 +71,8 @@ echo "Add activate.sh from Anaconda, for autoenv"
 export AWS_PROFILE=kubernetes
 echo 'AWS_PROFILE='$AWS_PROFILE 
 
+export AIRFLOW_HOME=~/airflow
+echo 'AIRFLOW_HOME='$AIRFLOW_HOME
 # KUBERNETES AUTO COMPLETE
 source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
 # echo "if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi" >> ~/.zshrc # add autocomplete permanently to your zsh shell
@@ -107,7 +109,8 @@ echo -n ${RESET}
 source ~/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle vi-mode
-
+antigen bundle supercrabtree/k
+antigen bundle iboyperson/zsh-pipenv 
 # CUSTOM PLUGINS
 #. ./.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 antigen bundle zsh-users/zsh-autosuggestions
@@ -120,7 +123,7 @@ export ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='agnoster'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(anaconda docker_machine dir vcs) # context 
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(anaconda virtualenv docker_machine dir vcs) # context 
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time vi_mode)
 POWERLEVEL9K_PYTHON_ICON='\U1F40D'
 POWERLEVEL9K_ANACONDA_LEFT_DELIMITER=""
@@ -252,8 +255,8 @@ echo "Added function install_branch(organization, repo, branch)"
 startocean() {
 	echo Offloading the Ocean Barge ...
 	export AQUARIUS_VERSION=v0.1.4
-	export BRIZO_VERSION=latest
-	export KEEPER_VERSION=v0.5.1
+	export BRIZO_VERSION=v0.1.4
+	export KEEPER_VERSION=v0.5.2
 	~/ocn/barge/start_ocean.sh --local-spree-node --no-pleuston
 }
 
