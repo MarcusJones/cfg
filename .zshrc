@@ -244,6 +244,7 @@ install_branch() {
 	THIS_ORG=$1
 	THIS_REPO=$2
 	THIS_BRANCH=$3
+	echo "Full command:" pip install --upgrade --force-reinstall git+https://github.com/$THIS_ORG/$THIS_REPO.git@$THIS_BRANCH
 	echo 
 	echo "Force-installing package from $THIS_BRANCH branch of $THIS_ORG/$THIS_REPO"
 	echo
@@ -256,12 +257,15 @@ startocean() {
 	echo Offloading the Ocean Barge ...
 	export AQUARIUS_VERSION=v0.1.4
 	export BRIZO_VERSION=v0.1.4
-	export KEEPER_VERSION=v0.5.2
+	export KEEPER_VERSION=v0.5.3
 	~/ocn/barge/start_ocean.sh --local-spree-node --no-pleuston
 }
 
 echo "Added function startocean()"
 
+speed_test() {
+	watch -n 60 "speedtest-cli | egrep 'Download:|Upload:'" 
+}
 
 scan_address() {
 	h
