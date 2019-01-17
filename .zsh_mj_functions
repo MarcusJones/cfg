@@ -107,6 +107,11 @@ startocean() {
 	~/ocn/start_ocean.sh --local-spree-node --no-pleuston
 }
 
+userocean() {
+	sudo chown -R $USER ~/.ocean
+}
+
+
 echo "Added function startocean()"
 
 speed_test() {
