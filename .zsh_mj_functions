@@ -127,3 +127,8 @@ startairflow() {
 	airflow scheduler & airflow webserver & 
 	sensible-browser http://0.0.0.0:8080
 }
+
+check_brizo_logs() {
+	kubectl logs my-ocean-stack-helm-ocean-brizo-7dc985c94c-r8x7g -f  
+}
+

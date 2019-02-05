@@ -70,6 +70,8 @@ echo "Add activate.sh from Anaconda, for autoenv"
 # AWS PROFILES 
 export AWS_PROFILE=kubernetes
 echo 'AWS_PROFILE='$AWS_PROFILE 
+export AWS_KEY_PATH=~/keys/trilobite.pem
+echo 'AWS_KEY_PATH='$AWS_KEY_PATH
 
 export AIRFLOW_HOME=~/airflow
 echo 'AIRFLOW_HOME='$AIRFLOW_HOME
@@ -159,10 +161,13 @@ antigen apply
 export PATH="$HOME/anaconda3/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+# Add homebrew
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
 echo ${BOLD_BLUE}"*** PATH ***"
 echo -n ${BLUE} 
 sed 's/:/\n/g' <<< "$PATH" 
 echo -n ${RESET}
 
 ### FUNCTIONS #################################################
-. ./.zsh_mj_functions
+. ~/.zsh_mj_functions
