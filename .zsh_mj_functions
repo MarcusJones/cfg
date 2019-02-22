@@ -1,5 +1,4 @@
-# COLORS 
-autoload colors
+# COLORS autoload colors
 if [[ "$terminfo[colors]" -gt 8 ]]; then
     colors
 fi
@@ -101,10 +100,15 @@ echo "Added function install_branch(organization, repo, branch)"
 
 startocean() {
 	echo Offloading the Ocean Barge ...
-	export AQUARIUS_VERSION=v0.1.5
-	export BRIZO_VERSION=v0.1.5
-	export KEEPER_VERSION=v0.5.3
-	~/ocn/start_ocean.sh --local-spree-node --no-pleuston
+	export AQUARIUS_VERSION=v0.1.8
+	export BRIZO_VERSION=v0.2.1
+	export KEEPER_VERSION=v0.6.12
+
+	echo "AQUARIUS $AQUARIUS_VERSION, BRIZO $BRIZO_VERSION, KEEPER $KEEPER_VERSION"
+	
+	# bash -x ~/ocn/start_ocean.sh --local-spree-node --no-pleuston
+	~/ocn/barge/start_ocean.sh --local-spree-node --no-pleuston
+
 }
 
 userocean() {
