@@ -75,6 +75,7 @@ echo 'AWS_KEY_PATH='$AWS_KEY_PATH
 
 export AIRFLOW_HOME=~/airflow
 echo 'AIRFLOW_HOME='$AIRFLOW_HOME
+echo Set Airflow environment! 
 # KUBERNETES AUTO COMPLETE
 source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
 # echo "if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi" >> ~/.zshrc # add autocomplete permanently to your zsh shell
@@ -84,6 +85,8 @@ source <(kubectl completion zsh)  # setup autocomplete in zsh into the current s
 # export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
 export PATH=/usr/local/cuda-9.0/bin${PATH:+${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}}
+#export PATH=/usr/local/cuda-9.0/bin:$PATH
+#export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
 echo Set CUDA environment!
 
 # NETWORK
