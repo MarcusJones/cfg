@@ -7,6 +7,10 @@ nnoremap gO O<Esc>j
 nnoremap <leader>j o<Esc>k
 nnoremap <leader>k O<Esc>j
 
+" Jump to python def
+nnoremap <leader>m ]m
+nnoremap <leader>n [m
+
 " Remap block select to avoid collision with ctrl-v paste
 nnoremap <C-q> <C-v>
 
