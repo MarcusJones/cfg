@@ -31,6 +31,15 @@
         "before": [ "<leader>", "k" ],
         "after": ["O", "<Esc>", "j"]
       },
+      {
+        "before": [ "<leader>", "v" ],
+        "after": ["<C-v>"]
+      },
+      {
+        "before": ["<C-Q>"],
+        "after": ["<C-v>"],
+        // "after": ["<C-Q>"]
+      },
 
 
       // {
