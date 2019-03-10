@@ -1,0 +1,76 @@
+{
+    "code-runner.saveAllFilesBeforeRun": true,
+    "editor.snippetSuggestions": "top",  
+    "vim.easymotion": false, // CHANGED
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": false, // CHANGED
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+      {
+        "before": ["j", "k"],
+        "after": ["<Esc>"]
+      }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["<leader>", "d"],
+        "after": ["d", "d"]
+      },
+      {
+        "before": ["<C-n>"],
+        "commands": [":nohl"]
+      },
+
+      {
+        "before": [ "<leader>", "j" ],
+        "after": ["o", "<Esc>", "k"]
+      },
+      {
+        "before": [ "<leader>", "k" ],
+        "after": ["O", "<Esc>", "j"]
+      },
+
+
+      // {
+      //   "before": ["<leader>", "j"],
+      //   "commands": "editor.action.insertLineAfter"
+      // },
+      // {
+      //   "before": ["<leader>", "k"],
+      //   "commands": "editor.action.insertLineBefore"
+      // },
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
+      ],
+
+// nnoremap <silent> <leader>j :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
+//nnoremap <silent> <leader>k :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
+
+
+
+
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+      "<C-a>": false,
+      "<C-f>": false
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "window.zoomLevel": 1,
+    "todo-tree.defaultHighlight": {}
+  }
