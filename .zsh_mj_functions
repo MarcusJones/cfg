@@ -100,9 +100,9 @@ echo "Added function install_branch(organization, repo, branch)"
 
 startocean() {
 	echo Offloading the Ocean Barge ...
-	export AQUARIUS_VERSION=v0.1.8
-	export BRIZO_VERSION=v0.2.1
-	export KEEPER_VERSION=v0.6.12
+	export AQUARIUS_VERSION=v0.1.11
+	export BRIZO_VERSION=v0.2.5
+	export KEEPER_VERSION=v0.8.5
 
 	echo "AQUARIUS $AQUARIUS_VERSION, BRIZO $BRIZO_VERSION, KEEPER $KEEPER_VERSION"
 	

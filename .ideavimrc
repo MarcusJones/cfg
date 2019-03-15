@@ -7,6 +7,9 @@ nnoremap gO O<Esc>j
 nnoremap <leader>j o<Esc>k
 nnoremap <leader>k O<Esc>j
 
+" Paste the 0 register
+nnoremap <leader>p "0p
+
 " Jump to python def
 nnoremap <leader>m ]m
 nnoremap <leader>n [m
