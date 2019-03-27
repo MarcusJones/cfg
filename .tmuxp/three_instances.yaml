@@ -1,0 +1,17 @@
+session_name: 3-pane-vertical
+windows:
+  - layout: even-vertical
+    window_name: my test window
+    panes:
+      - shell_command:
+        - export INSTANCE_DNS=ec2-3-120-38-54.eu-central-1.compute.amazonaws.com
+        - export AWS_KEY_PATH=~/keys/integration_testing.pem
+        - ssh -i $AWS_KEY_PATH ubuntu@$INSTANCE_DNS -oStrictHostKeyChecking=no
+      - shell_command:
+        - export INSTANCE_DNS=ec2-35-158-121-205.eu-central-1.compute.amazonaws.com
+        - export AWS_KEY_PATH=~/keys/integration_testing.pem
+        - ssh -i $AWS_KEY_PATH ubuntu@$INSTANCE_DNS -oStrictHostKeyChecking=no
+      - shell_command:
+        - export INSTANCE_DNS=ec2-3-120-38-54.eu-central-1.compute.amazonaws.com
+        - export AWS_KEY_PATH=~/keys/integration_testing.pem
+        - ssh -i $AWS_KEY_PATH ubuntu@$INSTANCE_DNS -oStrictHostKeyChecking=no

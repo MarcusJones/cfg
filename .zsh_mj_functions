@@ -111,6 +111,19 @@ startocean() {
 
 }
 
+startoceanlocalnode() {
+	echo Offloading the Ocean Barge ...
+	export AQUARIUS_VERSION=v0.1.11
+	export BRIZO_VERSION=v0.2.6
+	export KEEPER_VERSION=v0.8.6
+
+	echo "AQUARIUS $AQUARIUS_VERSION, BRIZO $BRIZO_VERSION, KEEPER $KEEPER_VERSION"
+	
+	# bash -x ~/ocn/start_ocean.sh --local-spree-node --no-pleuston
+	~/ocn/barge/start_ocean.sh --local-nile-node --no-pleuston --no-brizo --no-aquarius
+
+}
+
 userocean() {
 	sudo chown -R $USER ~/.ocean
 }
