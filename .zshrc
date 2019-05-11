@@ -38,6 +38,12 @@ bindkey "jk" vi-cmd-mode
 bindkey "kj" vi-cmd-mode
 
 
+
+### PLATFORMIO ##################################
+autoload bashcompinit && bashcompinit
+eval "$(_PLATFORMIO_COMPLETE=source platformio)"
+eval "$(_PIO_COMPLETE=source pio)"
+
 ### UI NOTES ####################################
 echo ${BOLD_GREEN}"*** UI NOTES ***"${GREEN}
 echo Guake shortcuts
@@ -54,6 +60,7 @@ alias act="source activate"
 alias an="anaconda-navigator"
 alias bcc="bitcoin-cli"
 alias pio="platformio"
+alias kk="kubectl"
 echo "Added aliases: mj, act, jl, jlhome, an, bcc"
 
 # DOTFILES ALIAS

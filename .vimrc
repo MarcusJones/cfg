@@ -59,6 +59,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'hdima/python-syntax'
 Plugin 'tomlion/vim-solidity'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'leafgarland/typescript-vim'
+au BufRead,BufNewFile *.ts   setfiletype typescript
 
 "---------- Aesthetics -----------
 " Plugin 'powerline/powerline'
