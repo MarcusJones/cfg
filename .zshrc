@@ -53,6 +53,7 @@ alias jl="jupyter-lab --notebook-dir=\"/home/batman/git/ref_DataScienceRetreat/D
 alias act="source activate"
 alias an="anaconda-navigator"
 alias bcc="bitcoin-cli"
+alias pio="platformio"
 echo "Added aliases: mj, act, jl, jlhome, an, bcc"
 
 # DOTFILES ALIAS
