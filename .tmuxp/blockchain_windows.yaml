@@ -1,0 +1,26 @@
+session_name: Blockchain Dev
+windows:
+  - layout: even-vertical
+    window_name: Gananache
+    panes:
+        - shell_command:
+          - cd ~/udacity_blockchain/PROJECT7_flight_surety
+          - ganache-cli --gasLimit 10000000 -m "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
+  - layout: even-vertical
+    window_name: Truffle
+    panes:
+        - shell_command:
+          - cd ~/udacity_blockchain/PROJECT7_flight_surety
+          - sleep 5s
+          - truffle compile
+          - truffle migrate
+  - layout: even-vertical
+    window_name: git
+    panes:
+        - shell_command:
+          - cd ~/udacity_blockchain/PROJECT7_flight_surety
+  - layout: even-vertical
+    window_name: DAPP
+    panes:
+        - shell_command:
+          - cd ~/udacity_blockchain/PROJECT7_flight_surety
