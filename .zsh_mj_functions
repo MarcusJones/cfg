@@ -100,9 +100,9 @@ echo "Added function install_branch(organization, repo, branch)"
 
 startocean() {
 	echo Offloading the Ocean Barge ...
-	export AQUARIUS_VERSION=v0.1.11
-	export BRIZO_VERSION=v0.2.5
-	export KEEPER_VERSION=v0.8.5
+	export AQUARIUS_VERSION=v0.2.2
+	export BRIZO_VERSION=v0.3.3
+	export KEEPER_VERSION=v0.9.1
 
 	echo "AQUARIUS $AQUARIUS_VERSION, BRIZO $BRIZO_VERSION, KEEPER $KEEPER_VERSION"
 	
@@ -113,9 +113,9 @@ startocean() {
 
 startoceanlocalnode() {
 	echo Offloading the Ocean Barge ...
-	export AQUARIUS_VERSION=v0.1.11
-	export BRIZO_VERSION=v0.2.6
-	export KEEPER_VERSION=v0.8.6
+	export AQUARIUS_VERSION=v0.2.2
+	export BRIZO_VERSION=v0.3.3
+	export KEEPER_VERSION=v0.9.1
 
 	echo "AQUARIUS $AQUARIUS_VERSION, BRIZO $BRIZO_VERSION, KEEPER $KEEPER_VERSION"
 	

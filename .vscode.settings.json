@@ -81,5 +81,6 @@
     },
     "javascript.updateImportsOnFileMove.enabled": "always",
     "window.zoomLevel": 1,
-    "todo-tree.defaultHighlight": {}
+    "todo-tree.defaultHighlight": {},
+    "editor.lineNumbers" : "relative"
   }
