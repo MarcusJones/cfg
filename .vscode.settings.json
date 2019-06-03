@@ -36,7 +36,7 @@
         "after": ["<C-v>"]
       },
       {
-        "before": ["<C-Q>"],
+        "before": ["<C-q>"],
         "after": ["<C-v>"],
         // "after": ["<C-Q>"]
       },

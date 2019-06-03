@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 " filetype off                  " required
 filetype plugin on
+" disable graphql let g:polyglot_disabled = ['graphql']
+
 
 autocmd VimEnter * echo "F2=NT, F3=NTfind, CTRL+hjkl=Window nav, "
 

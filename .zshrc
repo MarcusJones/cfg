@@ -54,6 +54,10 @@ echo 	Ctrl-Shift-R - Rename tab
 
 ### ALIASES #####################################
 alias mj="source mj.sh"
+alias tc="truffle compile --reset"
+alias tm="truffle migrate"
+alias tcm="truffle compile --reset & truffle migrate"
+alias tt="truffle test"
 alias jlhome="jupyter-lab"
 alias jl="jupyter-lab --notebook-dir=\"/home/batman/git/ref_DataScienceRetreat/DSR Lecture notebooks\""
 alias act="source activate"
