@@ -1,17 +1,17 @@
 session_name: Blockchain Dev
 windows:
   - layout: even-horizontal
-    window_name: Gananache
+    window_name: GananacheTruffle
     panes:
         - shell_command:
           - cd ~/udacity_blockchain_project7
-          - ganache-cli --gasLimit 20000000 -m "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
+          - ganache-cli --accounts 50 --gasLimit 20000000 -m "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
         - shell_command:
+          - tmux resize-pane -x 140
           - cd ~/udacity_blockchain_project7
           - sleep 5s
           - truffle compile --reset
           - truffle migrate
-          - tmux resize-pane -x 140  
   - layout: even-vertical
     window_name: git
     panes:
@@ -24,3 +24,10 @@ windows:
         - shell_command:
           - cd ~/udacity_blockchain_project7
           - clear
+  - layout: even-vertical
+    window_name: server
+    panes:
+        - shell_command:
+          - cd ~/udacity_blockchain_project7
+          - sleep 10s
+          - npm run server
