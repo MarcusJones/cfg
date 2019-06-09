@@ -12,23 +12,29 @@ windows:
           - sleep 5s
           - truffle compile --reset
           - truffle migrate
-          - tmux resize-pane -x 140
+
   - layout: even-vertical
     window_name: git
     panes:
         - shell_command:
           - cd ~/udacity_blockchain_project7
           - clear
+          - code .
+
   - layout: even-vertical
     window_name: DApp
     panes:
         - shell_command:
+          - sleep 10s
           - cd ~/udacity_blockchain_project7
           - clear
+          - npm run dapp
+
   - layout: even-vertical
     window_name: server
     panes:
         - shell_command:
           - cd ~/udacity_blockchain_project7
+          - clear
           - sleep 10s
           - npm run server
