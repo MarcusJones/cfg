@@ -7,24 +7,26 @@ windows:
           - cd ~/udacity_blockchain_project7
           - ganache-cli --accounts 50 --gasLimit 20000000 -m "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
         - shell_command:
-          - tmux resize-pane -x 140
           - cd ~/udacity_blockchain_project7
           - sleep 5s
           - truffle compile --reset
           - truffle migrate
-          - tmux resize-pane -x 140
+          - tmux resize-pane -x 170
   - layout: even-vertical
     window_name: git
     panes:
         - shell_command:
           - cd ~/udacity_blockchain_project7
           - clear
+          - code .
   - layout: even-vertical
     window_name: DApp
     panes:
         - shell_command:
           - cd ~/udacity_blockchain_project7
           - clear
+          - sleep 10s
+          - npm run dapp
   - layout: even-vertical
     window_name: server
     panes:
