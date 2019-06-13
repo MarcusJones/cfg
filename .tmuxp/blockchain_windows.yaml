@@ -23,6 +23,7 @@ windows:
     window_name: DApp
     panes:
         - shell_command:
+          - sleep 10s
           - cd ~/udacity_blockchain_project7
           - clear
           - sleep 10s
@@ -32,5 +33,6 @@ windows:
     panes:
         - shell_command:
           - cd ~/udacity_blockchain_project7
+          - clear
           - sleep 10s
           - npm run server
