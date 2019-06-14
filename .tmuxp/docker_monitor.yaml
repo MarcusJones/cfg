@@ -1,0 +1,22 @@
+session_name: Blockchain Dev
+windows:
+  - layout: even-vertical
+    window_name: SSH
+    panes:
+        - shell_command:
+          - clear
+          - export AWS_DEFAULT_PROFILE=my-EC2-S3-full-access
+          - export MY_INSTANCE_NAME='NDE POC 1'
+          - export MY_INSTANCE_DNS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$MY_INSTANCE_NAME" --output text --query 'Reservations[*].Instances[*].PublicDnsName')
+          - export AWS_KEY_PATH=~/keys/my-ec2-s3-security.pem
+          - ssh -i $AWS_KEY_PATH ubuntu@$MY_INSTANCE_DNS
+  - layout: even-vertical
+    window_name: Monitor2
+    panes:
+        - shell_command: 
+          - monitor_ec2 my-EC2-S3-full-access
+        - shell_command:
+          - export AWS_DEFAULT_PROFILE=my-EC2-S3-full-access
+          - export MY_INSTANCE_NAME='NDE POC 1'
+          - export MY_INSTANCE_DNS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$MY_INSTANCE_NAME" --output text --query 'Reservations[*].Instances[*].PublicDnsName')
+          - tput setaf 4; tput bold; echo $MY_INSTANCE_DNS    
