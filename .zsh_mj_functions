@@ -149,3 +149,11 @@ check_brizo_logs() {
 	kubectl logs my-ocean-stack-helm-ocean-brizo-7dc985c94c-r8x7g -f  
 }
 
+monitor_ec2() {
+export AWS_DEFAULT_PROFILE=$1
+echo Monitoring instances for user $AWS_DEFAULT_PROFILE
+while sleep 5; do 
+  clear; 
+  aws ec2 describe-instances --query "Reservations[*].Instances[*].{name: Tags[?Key=='Name'] | [0].Value, instance_id: InstanceId, ip_address: PrivateIpAddress, state: State.Name}" --output table; 
+done   
+}

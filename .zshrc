@@ -3,6 +3,7 @@ echo "In ~.zshrc"
 # SETUP! #######################################
 # Solve this error: WARNING! Your terminal supports less than 256 colors!
 export TERM="xterm-256color"
+export DISABLE_AUTO_TITLE='true'
 
 # LINUX HISTORY NO LINE NUMBERS
 HISTTIMEFORMAT="$(echo -e '\r\e[K')"
