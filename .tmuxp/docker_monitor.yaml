@@ -16,7 +16,9 @@ windows:
         - shell_command: 
           - monitor_ec2 my-EC2-S3-full-access
         - shell_command:
+          - tmux resize-pane -y 10
           - export AWS_DEFAULT_PROFILE=my-EC2-S3-full-access
           - export MY_INSTANCE_NAME='NDE POC 1'
           - export MY_INSTANCE_DNS=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$MY_INSTANCE_NAME" --output text --query 'Reservations[*].Instances[*].PublicDnsName')
+          - clear
           - tput setaf 4; tput bold; echo $MY_INSTANCE_DNS    

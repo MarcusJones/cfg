@@ -28,7 +28,7 @@ noremap <Right> <NOP>
 
 " make jk do Esc, remove Esc
 inoremap jk <Esc>
-inoremap <Esc> <Nop>
+
 
 " Numbering and cursor 
 set number 
